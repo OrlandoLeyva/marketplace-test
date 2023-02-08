@@ -20,11 +20,11 @@ class Product(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     price = models.FloatField()
-    stock = models.PositiveIntegerField()
+    # stock = models.PositiveIntegerField()
     available = models.BooleanField()
-    digital = models.BooleanField()
+    # digital = models.BooleanField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    categories = models.ManyToManyField(Category, related_name='products', through='ProductCategory')
+    categories = models.ManyToManyField(Category, related_name='products')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -42,13 +42,19 @@ class Review(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-class ProductCategory(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
     class Meta:
-        db_table = 'product_category'
-        verbose_name_plural = 'product-categories'
+        db_table = 'reviews'
     
     def __str__(self) -> str:
-        return f'{self.product}-{self.category}'
+        return f'{self.product}-{self.rating}'
+
+# class ProductCategory(models.Model):
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+#     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+#     class Meta:
+#         db_table = 'product_category'
+#         verbose_name_plural = 'product-categories'
+    
+#     def __str__(self) -> str:
+#         return f'{self.product}-{self.category}'
