@@ -12,7 +12,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     # categories = CategorySerializer(many=True)
-
+    # user = ReadOnlyField(source='user.username')
     class Meta:
         model = Product
         fields = '__all__'
@@ -28,11 +28,10 @@ class ProductSerializer(serializers.ModelSerializer):
     #     print(validated_data)
     #     raise serializers.ValidationError('This is not a real error')
         
-
-
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Product
-        fields = '__all__'
+        model = Review
+        fields = ('comment', 'rating')
+
 
     
