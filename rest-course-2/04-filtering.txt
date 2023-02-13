@@ -1,0 +1,19 @@
+Filtering helps us to extract the correct information based on certain user requirements, such as date, price, category, etc.
+
+We got to import a package that will help us to perform this task:
+    pip install django-filter
+    add django_filters to installed apps
+    REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+} # If you want to apply it to all the view classes
+from django_filters.rest_framework import DjangoFilterBackend
+filter_backends = [DjangoFilterBackend]
+
+NOTE: DJANGO FILTERING WILL ONLY WORK ON GENERIC VIEWS.
+
+FILTERING:
+    - Once the configuration is done, we need to specify according which filed we want to filter:
+        filterset_fields
+
+FILTERING VS SEARCHING:
+    filtering has be a exact math, unlike searching.

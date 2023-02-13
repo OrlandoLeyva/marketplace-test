@@ -1,0 +1,9 @@
+We need to cover other two topics: Pagination and filters.
+
+PAGINATION:
+    the number of content that will be return.
+FILTER:
+    return content based on different arguments.
+
+THROTTLING:
+    Helps us to restrict number of request users can perform.
