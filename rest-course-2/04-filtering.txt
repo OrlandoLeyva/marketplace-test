@@ -17,3 +17,5 @@ FILTERING:
 
 FILTERING VS SEARCHING:
     filtering has be a exact math, unlike searching.
+
+filterset_fields = ['available', 'categories__name']
