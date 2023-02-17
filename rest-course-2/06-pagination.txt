@@ -1,0 +1,26 @@
+PAGINATION:
+    dive the information in different pages.
+    dive tons of information into multiple parts.
+
+USAGE:
+    we could apply globally using settings configurations:
+        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+        'PAGE_SIZE': 100
+
+CUSTOM:
+    - as you have learned you can create your own configurations.
+    - you can create your Custom pagination class. Create the file pagination. Create a new class with a intuitive name tha inherits from the type of pagination you want to utilize:
+        - PageNumberPagination
+        - LimitOffsetPagination
+
+OFFSET AND LIMIT:
+    - offset indicates the starting position of the query.
+    - limit indicate the maximum number of items to return.
+    - let's suppose we have 100 items. we define a offset of 50 and a limit of ten. we'll be getting - - first items after the 50 item
+
+CURSOR:
+    Client get more results as they scroll down.
+    you just have access to next and previous.
+    ordering is required:
+        by default ordering is the creating time.
+    when creating a cursor pagination it is required to define an ordering system but you can run into an error you have define an ordering filter.

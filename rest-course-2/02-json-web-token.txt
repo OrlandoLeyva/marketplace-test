@@ -1,0 +1,18 @@
+Json web token is used to transmit information between parties. It is a json encode and signed.
+
+PACKAGE:
+    djangorestframework-simplejwt
+
+USAGE:
+    install the PACKAGE
+    add the necessary configuration
+
+NOTES:
+    when sending the jwt you need to use the keyword Bearer and when sending the refresh jwt you got user refresh instead.
+    That was not actually correct. You need to use form-encoded and send a refresh property with the token
+
+If you want the system returns you an access token and a refresh token when you're refreshing the token you need to include some extra configuration to the settings file.
+
+SIMPLE_JWT = {
+    'ROTATE_REFRESH_TOKENS': True
+}

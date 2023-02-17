@@ -1,0 +1,44 @@
+Throttling is similar to permissions but with a bing difference.
+
+By using permissions we can restrict request by different reasons.
+
+But, on the other hand, using throttling we can restrict access according to the number of request.
+for example, we limit the number of request to 100 per hour.
+
+We have a variety of Throttling techniques but the two most common ones are:
+    1.-AnonRateThrottle: For anonymous users.
+    2.-UserRateThrottle: For authenticated users.
+
+CONFIGURATION:
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',
+        'user': '1000/day'
+    }
+}
+
+First you add the type of throttling you want to use and secondly the number of request they can performed according to your requirements.
+
+Conclusion, Throttling limits the access to your system according to a number of requests in a certain time.
+
+USAGE:
+    - If you add the configuration to the settings field they will be applied to the entire system. 
+    - You can use the decorator @throttle_classes([UserRateThrottle]) to use it with function views:
+        IMPORTS:
+            from rest_framework.decorators import throttle_classes
+            from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
+    - It can be applied to your APIViews using throttle_classes = [].
+
+NOTES:
+    if the Throttling rules are applied directly to the views, it would mean that any action performed by the user (e.g. retrieve, update, or delete) would count towards the same set of Throttling rules.
+
+
+THROTTLE CLASSES: CUSTOM AND SCOPE:
+    
+
+
+
