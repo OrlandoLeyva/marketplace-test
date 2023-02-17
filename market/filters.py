@@ -20,9 +20,11 @@ class IsAvailableProductFilterBackend(filters.BaseFilterBackend):
 class ProductCategoryFilterBackend(filters.BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
         category = request.query_params.get('category')
-        category_queryset = Category.objects.get(name = category)
+        
         if not category:
             return queryset
+        
+        category_queryset = Category.objects.get(name = category)
         return [ product for product in queryset if category_queryset in product.categories.all()]
 
 class ProductReviewRatingFilterBackend(filters.BaseFilterBackend):

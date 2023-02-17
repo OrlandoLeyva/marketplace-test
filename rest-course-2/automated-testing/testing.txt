@@ -1,0 +1,5 @@
+Testing is meant to verify everything is working as expected.
+
+- If we have our API running correctly and we want to add new changes testing allows you to validate that anything is broke.
+
+- 

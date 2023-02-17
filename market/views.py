@@ -13,6 +13,9 @@ from .throttling import ReviewDetailsThrottle
 #*Filtering
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import (ProductsPriceFilterBackend, ProductCategoryFilterBackend, ProductReviewRatingFilterBackend)
+#*Pagination
+from rest_framework.pagination import LimitOffsetPagination
+from .pagination import ProductsPagination, ProductsPaginationOffsetLimit, ProductsCursorPagination
 
 # Create your views here.
 
@@ -21,7 +24,11 @@ class ProductsList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     filter_backends = [ProductsPriceFilterBackend, filters.SearchFilter, ProductCategoryFilterBackend]
+    # ordering_fields = ['name']
     search_fields = ['name']
+    # pagination_class = ProductsPagination
+    # pagination_class = ProductsPaginationOffsetLimit
+    pagination_class = ProductsCursorPagination
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
